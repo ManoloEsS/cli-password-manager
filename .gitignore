@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
@@ -205,3 +206,15 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+=======
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+>>>>>>> c98af24 (Basic structure for project, used uv to initiate python environment)
