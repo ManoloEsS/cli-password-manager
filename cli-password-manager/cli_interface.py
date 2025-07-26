@@ -12,25 +12,25 @@ def parser():
         "-a",
         "--add",
         help="will ask you for your username and password that goes with it",
-        type=str,
+        action="store_true",
     )
     group.add_argument(
         "-r",
         "--retrieve",
         help="will retrieve your password for the specified username or service",
-        type=str,
+        action="store_true",
     )
     group.add_argument(
         "-l",
         "--list",
         help="will list out all services and usernames",
-        type=str,
+        action="store_true",
     )
     group.add_argument(
         "-m",
         "--modify",
         help="Modify an existing password or delete a saved username password pair",
-        type=str,
+        action="store_true",
     )
     # group.add_argument(
     #     "-g",
