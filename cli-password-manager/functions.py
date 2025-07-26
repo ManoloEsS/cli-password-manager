@@ -54,19 +54,17 @@ def add_password():
     with open(passwords_file, "w") as f:
         json.dump(saved_passwords, f, indent=4)
 
+    print("Password added!")
+
 
 def retrieve_password():
     script_directory = os.path.dirname(os.path.abspath(__file__))
     passwords_file = os.path.join(script_directory, "passwords.json")
 
-    if not os.path.isfile(passwords_file):
+    if not os.path.isfile(passwords_file) or os.path.getsize(passwords_file) == 0:
         print(
-            "Passwords file doesn't exist. Add a password with the command 'clipm -add'"
+            "Passwords file doesn't exist or is empty. Add a password with the command 'clipm -add'"
         )
-        return
-
-    if os.path.getsize(passwords_file) == 0:
-        print("Passwords file is empty. Add a password with the command 'clipm -add'")
         return
 
     while True:
@@ -76,13 +74,11 @@ def retrieve_password():
             continue
         break
 
-    service = input("Enter the name of the service: ")
-
     with open(passwords_file, "r") as f:
         saved_passwords = json.load(f)
 
     while service not in saved_passwords:
-        service_completions = trie(service)
+        service_completions = trie(service[0])
         print("Service not found. Similar service names: ")
         for service in service_completions:
             print(service)
@@ -102,21 +98,17 @@ def retrieve_password():
     encrypted_password = saved_passwords[service][user_name]["password"]
     passkey = getpass.getpass("Enter your 4 word key separated with a space: ")
     decrypted_password = encryption.decrypt(encrypted_password, passkey)
-    print(decrypted_password)
+    print(f"Password for {user_name}: {decrypted_password}")
 
 
 def list_all():
     script_directory = os.path.dirname(os.path.abspath(__file__))
     passwords_file = os.path.join(script_directory, "passwords.json")
 
-    if not os.path.isfile(passwords_file):
+    if not os.path.isfile(passwords_file) or os.path.getsize(passwords_file) == 0:
         print(
-            "Passwords file doesn't exist. Add a password with the command 'clipm -add'"
+            "Passwords file doesn't exist or is empty. Add a password with the command 'clipm -add'"
         )
-        return
-
-    if os.path.getsize(passwords_file) == 0:
-        print("Passwords file is empty. Add a password with the command 'clipm -add'")
         return
 
     with open(passwords_file, "r") as f:
@@ -132,9 +124,74 @@ def services_usernames_tree(data, indent=0):
             services_usernames_tree(value, indent + 4)
 
 
-def show_help():
-    pass
+def modify_remove_username():
+    script_directory = os.path.dirname(os.path.abspath(__file__))
+    passwords_file = os.path.join(script_directory, "passwords.json")
+
+    if not os.path.isfile(passwords_file) or os.path.getsize(passwords_file) == 0:
+        print(
+            "Passwords file doesn't exist or is empty. Add a password with the command 'clipm -add'"
+        )
+        return
+
+    with open(passwords_file, "r") as f:
+        saved_passwords = json.load(f)
+
+    service = input("Enter name of the service: ")
+    while service not in saved_passwords:
+        service_completions = trie(service[0])
+        print("Service not found. Similar service names: ")
+        for service in service_completions:
+            print(service)
+        service = input("Enter the name of the service: ")
+
+    user_name = input("Enter a username to modify: ")
+    while user_name not in saved_passwords[service]:
+        print("Username not found. Saved usernames are: ")
+        for username in saved_passwords[service].keys():
+            print(username)
+        user_name = input("Enter a valid username: ")
+
+        new_password = getpass.getpass(
+            "Enter new password or leave empty to delete username: "
+        )
+
+    while True:
+        passkey = getpass.getpass("Enter your 4 word key separated with a space: ")
+        if len(passkey.strip().split()) != 4:
+            print("Passkey must be exactly 4 words separated by spaces.")
+            continue
+        break
+
+    password_to_modify = getpass.getpass("Enter the old password: ")
+    encrypted_old_password = saved_passwords[service][user_name]["password"]
+    password_check = encryption.encrypt(password_to_modify, passkey)
+
+    while password_check != encrypted_old_password:
+        password_to_modify = getpass.getpass("Wrong password. Try again: ")
+        password_check = encryption.encrypt(password_to_modify, passkey)
+
+    if not new_password:
+        del saved_passwords[service][user_name]
+        if not saved_passwords[service]:
+            del saved_passwords[service]
+        return
+
+    new_encrypted_password = encryption.encrypt(new_password, passkey)
+    saved_passwords[service][user_name]["password"] = new_encrypted_password
+
+    with open(passwords_file, "w") as f:
+        json.dump(saved_passwords, f, indent=4)
 
 
-def trie():
-    pass
+def trie(prefix):
+    script_directory = os.path.dirname(os.path.abspath(__file__))
+    passwords_file = os.path.join(script_directory, "passwords.json")
+
+    if not os.path.isfile(passwords_file) or os.path.getsize(passwords_file) == 0:
+        return []
+
+    with open(passwords_file, "r") as f:
+        saved_passwords = json.load(f)
+
+    return [service for service in saved_passwords if service.startswith(prefix)]
