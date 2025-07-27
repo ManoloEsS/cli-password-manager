@@ -29,6 +29,7 @@ services' usernames and passwords by storing them locally and encrypted using a 
 
 - A four word passkey acts as the encryption and decryption key
 - A secure 32-byte hash is derived from the passkey and used as the salt in the encryption and decryption process
+- Fernet(symmetric encryption) is one of the most widely used for developers to secure sensitive information
 - Data is stored locally in a .json file
 
 ### Why 4 words?
@@ -120,10 +121,10 @@ clipm --help
 ## 🛠 Usage
 
 ```bash
-# Add a new password, (if passwords.json doesn't exist it creates it in the tool's directory)
+# Add a new password and encrypt using your passkey, (if passwords.json doesn't exist it creates it in the tool's directory)
 clipm --add
 
-# Retrieve a password using
+# Retrieve an encrypted password and decrypt using your passkey
 clipm --retrieve
 
 # List all stored services
