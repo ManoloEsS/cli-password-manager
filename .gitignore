@@ -217,4 +217,6 @@ wheels/
 
 # Virtual environments
 .venv
->>>>>>> c98af24 (Basic structure for project, used uv to initiate python environment)
+
+#Json files
+*.json
