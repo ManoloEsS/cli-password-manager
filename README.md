@@ -5,7 +5,7 @@
 Cli-password-manager is a utility to encrypt, store and manage passwords from anywhere in your terminal. It allows you to have full control of your
 services' usernames and passwords by storing them locally and encrypted using a passkey of your choice.
 
-## Degooglify your life and take control of your data.
+## De-google-ify your life and take control of your data.
 
 > "The closest thing to burying your passwords in an undisclosed location without having to go outside"  
 > —Some arch user, probably
@@ -120,36 +120,43 @@ clipm --help
 ## 🛠 Usage
 
 ```bash
-# Add a new password
+# Add a new password, (if passwords.json doesn't exist it creates it in the tool's directory)
 clipm --add
 
-# Retrieve a password
+# Retrieve a password using
 clipm --retrieve
 
 # List all stored services
 clipm --list
 
-# Generate a password
-clipm --generate 
+#Modify  or delete an existing username-password pair
+clipm --modify
+
+# Generate a secure password
+clipm --generate
+
+
 ```
 
 ---
 
 ## 🖼️ Screenshots
 
-Add your screenshots here!
+![example](images/example.png)
 
-![image1](image1)
-<!-- You can rename image1 to your actual file name or add more images as needed -->
+
+![example](images/help.png)
+
+
+![example](images/list.png)
 
 ---
 
-## 🎉 Cool Emojis
+## ⚡ Future updates
 
-- 🔒 Secure storage
-- ⚡ Fast access
-- 🌈 Customizable
-- 🧑‍💻 Developer-friendly
+- More robust error handling
+- Better suggestions
+- Create your own salt option
 
 ---
 
@@ -160,7 +167,7 @@ This project is licensed under the MIT License.
 
 ---
 
-## 🙏 Project made for the Boot.dev 2025 Hachathon.
+## 🙏 Project made for the Boot.dev 2025 Hackathon.
 
 Contributors:
 -ManoloEsS
