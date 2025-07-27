@@ -42,19 +42,84 @@ services' usernames and passwords by storing them locally and encrypted using a 
 
 ### Using `git`
 
-```bash
-git clone https://github.com/ManoloEsS/cli-password-manager.git
-cd cli-password-manager
-# Install dependencies (example: Python)
-pip install -r requirements.txt
+# Installation Instructions for `cli-password-manager` (Python, via pipx)
+
+## Prerequisites
+
+- **pipx**: A tool to install and run Python CLI applications in isolated environments.
+- **Python**: Version 3.7 or newer.
+
+## 1. Install pipx and Python
+
+### Debian / Ubuntu
+```sh
+sudo apt update
+sudo apt install -y pipx python3
+python3 -m pip install --user pipx  # In case apt version is outdated
+python3 -m pipx ensurepath
 ```
 
-### Using Python Package (if available)
-
-```bash
-pip install cli-password-manager
+### Arch Linux
+```sh
+sudo pacman -Syu python-pipx python
+pipx ensurepath
 ```
 
+### Fedora
+```sh
+sudo dnf install -y python3-pipx python3
+pipx ensurepath
+```
+
+### macOS (using Homebrew)
+```sh
+brew install pipx python
+pipx ensurepath
+```
+
+### Generic Linux
+- Install Python 3.7+ from your package manager.
+- Install pipx via pip:
+  ```sh
+  python3 -m pip install --user pipx
+  python3 -m pipx ensurepath
+  ```
+
+### Windows
+- Open Command Prompt (cmd) or PowerShell and run:
+  ```sh
+  python -m pip install --user pipx
+  python -m pipx ensurepath
+  ```
+- You may need to restart your terminal after running `pipx ensurepath`.
+
+## 2. Install the CLI Password Manager with pipx
+
+```sh
+pipx install git+https://github.com/ManoloEsS/cli-password-manager.git
+```
+
+*If your project is published on PyPI, replace the git URL with the package name:*
+```sh
+pipx install cli-password-manager
+```
+
+## 3. Verify Installation from anywhere in your terminal
+
+```sh
+clipm --help
+```
+
+---
+
+**Notes:**
+- If you just installed pipx, restart your shell or run `pipx ensurepath` and follow its instructions to update your `$PATH`.
+- pipx installs CLI tools globally but isolates their dependencies from the system Python.
+- For updates, simply run:
+  ```sh
+  pipx upgrade cli-password-manager
+  ```
+  
 ---
 
 ## 🛠 Usage
