@@ -1,3 +1,5 @@
+
+![cli-password-manager1](images/2025-07-27-010250_hyprshot.png)
 # 🔐 CLI Password Manager
 
 A simple and secure command-line password manager built with ❤️.
