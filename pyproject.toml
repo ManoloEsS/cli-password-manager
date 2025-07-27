@@ -1,7 +1,13 @@
 [project]
 name = "cli-password-manager"
 version = "0.1.0"
-description = "Add your description here"
+description = "Tool for managing passwords in a local .json file with built in encryption and decryption"
+authors =[{name = "Manolo Estrada(ManoloEsS)"}, {name = "Tyler(Soullessgent)"}]
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+    "cryptography"
+]
+
+[project.scripts]
+clipm = "cli_password_manager.cli:main"
