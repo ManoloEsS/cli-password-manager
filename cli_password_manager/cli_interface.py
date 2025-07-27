@@ -15,19 +15,19 @@ def parser():
     group.add_argument(
         "-a",
         "--add",
-        help="will ask you for your username and password that goes with it",
+        help="Ask you for your username and password that goes with it",
         action="store_true",
     )
     group.add_argument(
         "-r",
         "--retrieve",
-        help="will retrieve your password for the specified username or service",
+        help="Retrieve your password for the specified username or service",
         action="store_true",
     )
     group.add_argument(
         "-l",
         "--list",
-        help="will list out all services and usernames",
+        help="List out all services and usernames",
         action="store_true",
     )
     group.add_argument(
@@ -39,7 +39,7 @@ def parser():
     group.add_argument(
         "-g",
         "--generate",
-        help="will generate a password, then will ask for comfirmation of that password. Then will ask the service and username the password would be saved under",
+        help="Generate a password",
         action="store_true",
     )
     args = parser.parse_args()
