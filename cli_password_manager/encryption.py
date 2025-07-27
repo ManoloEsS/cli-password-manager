@@ -44,15 +44,3 @@ def decrypt(encrypted_token, passkey):
     encrypted_bytes = base64.urlsafe_b64decode(encrypted_token)
     decrypted_password = f.decrypt(encrypted_bytes).decode("utf-8")
     return decrypted_password
-
-
-# TEST DELETE BEFORE SHIPPING
-if __name__ == "__main__":
-    paskey = input("please select 4 words: ")
-    secret = input("Enter text to encrypt: ")
-    encrypted = encrypt(paskey, secret)
-    print("Encrypted:", encrypted)
-
-    decrypted = decrypt(paskey, encrypted)
-    print("Decrypted:", decrypted)
-    print("Decrypted:", decrypted)
