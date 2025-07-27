@@ -44,6 +44,12 @@ def parser():
         help="generate a secure password",
         action="store_true",
     )
+    group.add_argument(
+        "-x",
+        "--reset",
+        help="delete .json file (use if encountering errors)",
+        action="store_true",
+    )
     args = parser.parse_args()
 
     if args.add:
