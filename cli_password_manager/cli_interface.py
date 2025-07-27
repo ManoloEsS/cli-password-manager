@@ -47,12 +47,6 @@ def parser():
     group.add_argument(
         "-x",
         "--reset",
-        help="Delete all services, users, and passwords",
-        action="store_true",
-    )
-    group.add_argument(
-        "-x",
-        "--reset",
         help="delete .json file (use if encountering errors)",
         action="store_true",
     )
@@ -68,3 +62,5 @@ def parser():
         functions.modify_remove_username()
     elif args.generate:
         functions.generate()
+    elif args.reset:
+        functions.reset()
