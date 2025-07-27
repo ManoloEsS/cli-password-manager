@@ -129,11 +129,14 @@ clipm --retrieve
 # List all stored services
 clipm --list
 
-#Modify  or delete an existing username-password pair
+# Modify or delete an existing username-password pair
 clipm --modify
 
 # Generate a secure password
 clipm --generate
+
+# Delete the passwords.json file
+clipm --reset
 
 
 ```
