@@ -107,8 +107,10 @@ def retrieve_password():
             print(service)
         service = input("Enter the name of the service: ")
 
-    for key in saved_passwords[service].keys():
-        print(key)
+    if saved_passwords[service]:
+        print("Saved usernames for service are: ")
+        for key in saved_passwords[service].keys():
+            print(key)
 
     user_name = input("Enter a username: ")
 
