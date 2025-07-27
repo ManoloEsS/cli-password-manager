@@ -32,12 +32,12 @@ def parser():
         help="Modify an existing password or delete a saved username password pair",
         action="store_true",
     )
-    # group.add_argument(
-    #     "-g",
-    #     "--generate",
-    #     help="will generate a password, then will ask for comfirmation of that password. Then will ask the service and username the password would be saved under",
-    #     type=str,
-    # )
+    group.add_argument(
+        "-g",
+        "--generate",
+        help="will generate a password, then will ask for comfirmation of that password. Then will ask the service and username the password would be saved under",
+        action="store_true",
+    )
     args = parser.parse_args()
 
     if args.add:
@@ -48,3 +48,5 @@ def parser():
         functions.list_all()
     elif args.modify:
         functions.modify_remove_username()
+    elif args.generate:
+        functions.generate()

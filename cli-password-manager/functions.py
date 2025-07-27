@@ -2,6 +2,8 @@ import os
 import encryption
 import json
 import getpass
+import string
+import random
 
 
 def add_password():
@@ -95,9 +97,14 @@ def retrieve_password():
             print(username)
         user_name = input("Enter a username: ")
 
-    encrypted_password = saved_passwords[service][user_name]["password"]
-    passkey = getpass.getpass("Enter your 4 word key separated with a space: ")
-    decrypted_password = encryption.decrypt(encrypted_password, passkey)
+    while True:
+        try:
+            encrypted_password = saved_passwords[service][user_name]["password"]
+            passkey = getpass.getpass("Enter your 4 word key separated with a space: ")
+            decrypted_password = encryption.decrypt(encrypted_password, passkey)
+            break
+        except Exception:
+            print("Incorrect passkey. Please try again or Ctrl+C to exit")
     print(f"Password for {user_name}: {decrypted_password}")
 
 
@@ -183,6 +190,8 @@ def modify_remove_username():
     with open(passwords_file, "w") as f:
         json.dump(saved_passwords, f, indent=4)
 
+    print("Username/password succesfully modified!")
+
 
 def trie(prefix):
     script_directory = os.path.dirname(os.path.abspath(__file__))
@@ -195,3 +204,16 @@ def trie(prefix):
         saved_passwords = json.load(f)
 
     return [service for service in saved_passwords if service.startswith(prefix)]
+
+
+def generate():
+    letters = string.ascii_letters
+    numbers = string.digits
+    special_characters = string.punctuation
+
+    all_characters = letters + numbers + special_characters
+    password = ""
+    for i in range(17):
+        randomchar = random.choice(all_characters)
+        password += randomchar
+    print(password)
