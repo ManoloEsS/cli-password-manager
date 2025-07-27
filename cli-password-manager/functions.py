@@ -33,6 +33,10 @@ def add_password():
         if len(passkey.strip().split()) != 4:
             print("Passkey must be exactly 4 words separated by spaces.")
             continue
+        confirmation = getpass.getpass("Confirm your 4 word key: ")
+        if passkey != confirmation:
+            print("Does not match. Please try again.")
+            continue
         break
 
     # add error handling
@@ -114,7 +118,7 @@ def list_all():
 
     if not os.path.isfile(passwords_file) or os.path.getsize(passwords_file) == 0:
         print(
-            "Passwords file doesn't exist or is empty. Add a password with the command 'clipm -add'"
+            "Passwords file doesn't exist or is empty. Add a password with the command 'clipm -a'"
         )
         return
 
@@ -137,7 +141,7 @@ def modify_remove_username():
 
     if not os.path.isfile(passwords_file) or os.path.getsize(passwords_file) == 0:
         print(
-            "Passwords file doesn't exist or is empty. Add a password with the command 'clipm -add'"
+            "Passwords file doesn't exist or is empty. Add a password with the command 'clipm -a'"
         )
         return
 
@@ -211,7 +215,6 @@ def generate():
     numbers = string.digits
     special_characters = string.punctuation
 
-    all_characters = letters + numbers + special_characters
     password = ""
     for i in range(6):
         randomchar = random.choice(letters)
@@ -220,5 +223,4 @@ def generate():
         password += randomnum
         randomspecial = random.choice(special_characters)
         password += randomspecial
-    return password
     print(password)

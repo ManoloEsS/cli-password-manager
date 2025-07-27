@@ -1,6 +1,4 @@
 import cli_interface
-import functions
-import encryption
 
 
 def main():
