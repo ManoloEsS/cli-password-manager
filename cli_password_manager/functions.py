@@ -4,7 +4,7 @@ import json
 import getpass
 import string
 import random
-# from pyfiglet import figlet_format
+from pyfiglet import figlet_format
 
 
 def add_password():
@@ -36,6 +36,7 @@ def add_password():
                 else:
                     print("Exiting program without overwriting.")
                     return
+        break
 
     while True:
         password = getpass.getpass("Enter the password to be encrypted: ")
@@ -75,7 +76,7 @@ def add_password():
     with open(passwords_file, "w") as f:
         json.dump(saved_passwords, f, indent=4)
 
-    # print(figlet_format("Password Added!", font= "big"))
+    print(figlet_format("Password Added!", font="big"))
 
 
 def retrieve_password():
@@ -211,7 +212,7 @@ def modify_remove_username():
     with open(passwords_file, "w") as f:
         json.dump(saved_passwords, f, indent=4)
 
-    # print(figlet_format("Username/password succesfully modified!", font= "big"))
+    print(figlet_format("Username/password succesfully modified!", font="big"))
 
 
 def trie(prefix):

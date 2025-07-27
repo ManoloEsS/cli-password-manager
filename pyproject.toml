@@ -6,7 +6,8 @@ authors =[{name = "Manolo Estrada(ManoloEsS)"}, {name = "Tyler(Soullessgent)"}]
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
-    "cryptography"
+    "cryptography",
+    "pyfiglet"
 ]
 
 [project.scripts]
