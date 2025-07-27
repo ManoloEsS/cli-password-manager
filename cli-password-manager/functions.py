@@ -213,7 +213,12 @@ def generate():
 
     all_characters = letters + numbers + special_characters
     password = ""
-    for i in range(17):
-        randomchar = random.choice(all_characters)
+    for i in range(6):
+        randomchar = random.choice(letters)
         password += randomchar
+        randomnum = random.choice(numbers)
+        password += randomnum
+        randomspecial = random.choice(special_characters)
+        password += randomspecial
+    return password
     print(password)
