@@ -1,6 +1,6 @@
 import argparse
 from cli_password_manager import functions
-from pyfiglet import figlet_format
+#from pyfiglet import figlet_format
 
 
 def parser():
