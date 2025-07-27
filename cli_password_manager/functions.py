@@ -23,7 +23,7 @@ def add_password():
             print("Username cannot be empty.")
             continue
 
-        if os.path.getsize(passwords_file) > 0:
+        if os.path.isfile(passwords_file) and os.path.getsize(passwords_file) > 0:
             with open(passwords_file, "r") as f:
                 saved_passwords = json.load(f)
             if service in saved_passwords and user_name in saved_passwords[service]:
