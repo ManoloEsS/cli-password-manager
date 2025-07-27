@@ -23,7 +23,7 @@ services' usernames and passwords by storing them locally and encrypted using a 
 
 ---
 
-## 🧑‍💻 How does it work
+## 🧑‍💻 How does it work?
 
  ### When you save a password it gets encrypted using the "Cryptography" library
 
