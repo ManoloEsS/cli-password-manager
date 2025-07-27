@@ -128,11 +128,15 @@ def list_all():
     services_usernames_tree(saved_passwords)
 
 
-def services_usernames_tree(data, indent=0):
-    for key, value in data.items():
-        print(" " * indent + key)
+def services_usernames_tree(data, prefix="", is_last=True):
+    items = list(data.items())
+    for index, (key, value) in enumerate(items):
+        last = index == len(items) - 1
+        connector = "└── " if last else "├── "
+        print(prefix + connector + str(key))
         if isinstance(value, dict) and "password" not in value:
-            services_usernames_tree(value, indent + 4)
+            extension = "    " if last else "│   "
+            services_usernames_tree(value, prefix + extension, last)
 
 
 def modify_remove_username():
@@ -180,7 +184,7 @@ def modify_remove_username():
             del saved_passwords[service]
         with open(passwords_file, "w") as f:
             json.dump(saved_passwords, f, indent=4)
-        print("Username/password succesfully modified!")
+        print("Username/password succesfully deleted!")
         return
 
     new_encrypted_password = encryption.encrypt(new_password, passkey)
