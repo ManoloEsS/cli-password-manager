@@ -17,31 +17,37 @@ def parser():
     group.add_argument(
         "-a",
         "--add",
-        help="create a .json file and store an encrypted password tied to a service and username",
+        help="Create an encrypted password tied to a service and username",
         action="store_true",
     )
     group.add_argument(
         "-r",
         "--retrieve",
-        help="decrypt and retrieve a password for the specified service and username",
+        help="Decrypt and retrieve a password for the specified service and username",
         action="store_true",
     )
     group.add_argument(
         "-l",
         "--list",
-        help="list out all stored services and their usernames",
+        help="List out all stored services and their usernames",
         action="store_true",
     )
     group.add_argument(
         "-m",
         "--modify",
-        help="modify or delete an existing username-password pair",
+        help="Modify or delete an existing username-password pair",
         action="store_true",
     )
     group.add_argument(
         "-g",
         "--generate",
-        help="generate a secure password",
+        help="Generate a secure password",
+        action="store_true",
+    )
+    group.add_argument(
+        "-x",
+        "--reset",
+        help="Delete all services, users, and passwords",
         action="store_true",
     )
     group.add_argument(
