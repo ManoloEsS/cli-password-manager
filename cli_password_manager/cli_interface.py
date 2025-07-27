@@ -8,38 +8,40 @@ def parser():
     if "-h" in sys.argv or "--help" in sys.argv:
         (print(figlet_format("CLIPM", font="isometric1")),)
     parser = argparse.ArgumentParser(
-        prog="clipm", description="a simple and secure password manager"
+        prog="clipm",
+        description="""Cli-password-manager is a utility to encrypt, store and manage passwords from anywhere in your terminal.
+        It allows you to have full control of your services' usernames and passwords by storing them locally and encrypted using a passkey of your choice.""",
     )
     group = parser.add_mutually_exclusive_group(required=True)
 
     group.add_argument(
         "-a",
         "--add",
-        help="Ask you for your username and password that goes with it",
+        help="create a .json file and store an encrypted password tied to a service and username",
         action="store_true",
     )
     group.add_argument(
         "-r",
         "--retrieve",
-        help="Retrieve your password for the specified username or service",
+        help="decrypt and retrieve a password for the specified service and username",
         action="store_true",
     )
     group.add_argument(
         "-l",
         "--list",
-        help="List out all services and usernames",
+        help="list out all stored services and their usernames",
         action="store_true",
     )
     group.add_argument(
         "-m",
         "--modify",
-        help="Modify an existing password or delete a saved username password pair",
+        help="modify or delete an existing username-password pair",
         action="store_true",
     )
     group.add_argument(
         "-g",
         "--generate",
-        help="Generate a password",
+        help="generate a secure password",
         action="store_true",
     )
     args = parser.parse_args()
