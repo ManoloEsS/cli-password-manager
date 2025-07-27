@@ -121,16 +121,16 @@ clipm --help
 
 ```bash
 # Add a new password
-cli-password-manager add <service> <username> <password>
+clipm --add <service> <username> <password>
 
 # Retrieve a password
-cli-password-manager get <service>
+clipm --retrieve <service>
 
 # List all stored services
-cli-password-manager list
+clipm --list
 
-# Delete a password
-cli-password-manager delete <service>
+# Generate a password
+clipm --generate 
 ```
 
 ---
