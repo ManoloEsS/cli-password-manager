@@ -12,3 +12,6 @@ dependencies = [
 
 [project.scripts]
 clipm = "cli_password_manager.cli:main"
+
+[tool.setuptools]
+packages = ["cli_password_manager"]
