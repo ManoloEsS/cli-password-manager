@@ -170,7 +170,7 @@ This project is licensed under the MIT License.
 
 ---
 
-## 🙏 Project made for the Boot.dev 2025 Hackathon.
+## 🙏 Project made for the Boot.dev 2025 Hackathon
 
 Contributors:
 -ManoloEsS
