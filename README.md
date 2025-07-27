@@ -124,7 +124,7 @@ clipm --help
 clipm --add <service> <username> <password>
 
 # Retrieve a password
-clipm --retrieve <service>
+clipm --retrieve <service> <username>
 
 # List all stored services
 clipm --list
