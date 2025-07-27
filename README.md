@@ -99,11 +99,6 @@ pipx ensurepath
 pipx install git+https://github.com/ManoloEsS/cli-password-manager.git
 ```
 
-*If your project is published on PyPI, replace the git URL with the package name:*
-```sh
-pipx install cli-password-manager
-```
-
 ## 3. Verify Installation from anywhere in your terminal
 
 ```sh
