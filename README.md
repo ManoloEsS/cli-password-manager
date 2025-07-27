@@ -27,7 +27,7 @@ services' usernames and passwords by storing them locally and encrypted using a 
 
  ### When you save a password it gets encrypted using the "Cryptography" library
 
-- The four word passkey acts as the encryption and decryption key
+- A four word passkey acts as the encryption and decryption key
 - A secure 32-byte hash is derived from the passkey and used as the salt in the encryption and decryption process
 - Data is stored locally in a .json file
 
