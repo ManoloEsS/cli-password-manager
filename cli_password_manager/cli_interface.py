@@ -1,10 +1,13 @@
 import argparse
 from cli_password_manager import functions
+from pyfiglet import figlet_format
 
 
 def parser():
     parser = argparse.ArgumentParser(
-        prog="clipm", description="a simple and secure password manager"
+        prog="clipm", 
+        print(figlet_format("CLIPM", font= "isometric1")), 
+        description="a simple and secure password manager"
     )
     group = parser.add_mutually_exclusive_group(required=True)
 
