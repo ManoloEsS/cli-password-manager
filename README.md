@@ -121,10 +121,10 @@ clipm --help
 
 ```bash
 # Add a new password
-clipm --add <service> <username> <password>
+clipm --add
 
 # Retrieve a password
-clipm --retrieve <service> <username>
+clipm --retrieve
 
 # List all stored services
 clipm --list
