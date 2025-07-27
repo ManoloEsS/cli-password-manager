@@ -1,4 +1,4 @@
-import cli_interface
+from cli_password_manager import cli_interface, functions, encryption
 
 
 def main():
