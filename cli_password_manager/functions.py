@@ -4,8 +4,7 @@ import json
 import getpass
 import string
 import random
-#from pyfiglet import figlet_format
-
+# from pyfiglet import figlet_format
 
 
 def add_password():
@@ -23,7 +22,21 @@ def add_password():
         if not user_name:
             print("Username cannot be empty.")
             continue
-        break
+
+        if os.path.getsize(passwords_file) > 0:
+            with open(passwords_file, "r") as f:
+                saved_passwords = json.load(f)
+            if service in saved_passwords and user_name in saved_passwords[service]:
+                print(
+                    f"Username {user_name} for {service} already has a password stored."
+                )
+                overwrite = input("Overwrite? [y/n]").lower()
+                if overwrite == "y":
+                    break
+                else:
+                    print("Exiting program without overwriting.")
+                    return
+
     while True:
         password = getpass.getpass("Enter the password to be encrypted: ")
         if not password:
@@ -62,7 +75,7 @@ def add_password():
     with open(passwords_file, "w") as f:
         json.dump(saved_passwords, f, indent=4)
 
-    #print(figlet_format("Password Added!", font= "big"))
+    # print(figlet_format("Password Added!", font= "big"))
 
 
 def retrieve_password():
@@ -111,7 +124,10 @@ def retrieve_password():
             break
         except Exception:
             print("Incorrect passkey. Please try again or Ctrl+C to exit")
-    print(f"Password for {user_name}: {decrypted_password}")
+    try:
+        print(f"Password for {user_name}: {decrypted_password}")
+    except NameError:
+        print("Failed to retrieve password. Please check your passkey and try again.")
 
 
 def list_all():
@@ -195,7 +211,7 @@ def modify_remove_username():
     with open(passwords_file, "w") as f:
         json.dump(saved_passwords, f, indent=4)
 
-    #print(figlet_format("Username/password succesfully modified!", font= "big"))
+    # print(figlet_format("Username/password succesfully modified!", font= "big"))
 
 
 def trie(prefix):
@@ -216,12 +232,16 @@ def generate():
     numbers = string.digits
     special_characters = string.punctuation
 
-    password = ""
-    for i in range(6):
-        randomchar = random.choice(letters)
-        password += randomchar
-        randomnum = random.choice(numbers)
-        password += randomnum
-        randomspecial = random.choice(special_characters)
-        password += randomspecial
-    print(password)
+    while True:
+        password = ""
+        for i in range(6):
+            randomchar = random.choice(letters)
+            password += randomchar
+            randomnum = random.choice(numbers)
+            password += randomnum
+            randomspecial = random.choice(special_characters)
+            password += randomspecial
+        password_ok = input(f"Is {password} ok?[y/n]").lower()
+        if password_ok == "y":
+            break
+    print(f"Generated secure password: {password}")
