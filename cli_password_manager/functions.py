@@ -100,9 +100,8 @@ def retrieve_password():
         saved_passwords = json.load(f)
 
     while service not in saved_passwords:
-        service_completions = trie(service[0])
-        print("Service not found. Similar service names: ")
-        for service in service_completions:
+        print("Service not found. Saved services: ")
+        for service in saved_passwords:
             print(service)
         service = input("Enter the name of the service: ")
 
@@ -246,3 +245,18 @@ def generate():
         if password_ok == "y":
             break
     print(f"Generated secure password: {password}")
+
+
+def reset():
+    script_directory = os.path.dirname(os.path.abspath(__file__))
+    passwords_file = os.path.join(script_directory, "passwords.json")
+
+    try:
+        os.remove(passwords_file)
+        print(
+            "File succesfully deleted! Use 'clipm -a' to create a new file and store a password"
+        )
+    except FileNotFoundError:
+        print(
+            "Passwords file doesn't exist. Use 'clipm -a' to create a file and store a password"
+        )
