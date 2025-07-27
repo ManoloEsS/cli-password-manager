@@ -39,17 +39,19 @@ def add_password():
         break
 
     while True:
-        password = getpass.getpass("Enter the password to be encrypted: ")
+        password = getpass.getpass("Enter the password to be encrypted: \U0001f512")
         if not password:
             print("Password cannot be empty.")
             continue
         break
     while True:
-        passkey = getpass.getpass("Enter your 4 word key separated with a space: ")
+        passkey = getpass.getpass(
+            "Enter your 4 word key separated with a space: \U0001f512"
+        )
         if len(passkey.strip().split()) != 4:
             print("Passkey must be exactly 4 words separated by spaces.")
             continue
-        confirmation = getpass.getpass("Confirm your 4 word key: ")
+        confirmation = getpass.getpass("Confirm your 4 word key: \U0001f512")
         if passkey != confirmation:
             print("Does not match. Please try again.")
             continue
@@ -119,7 +121,9 @@ def retrieve_password():
     while True:
         try:
             encrypted_password = saved_passwords[service][user_name]["password"]
-            passkey = getpass.getpass("Enter your 4 word key separated with a space: ")
+            passkey = getpass.getpass(
+                "Enter your 4 word key separated with a space: \U0001f512"
+            )
             decrypted_password = encryption.decrypt(encrypted_password, passkey)
             break
         except Exception:
@@ -186,11 +190,13 @@ def modify_remove_username():
         user_name = input("Enter a valid username: ")
 
     new_password = getpass.getpass(
-        "Enter new password or leave empty to delete username: "
+        "Enter new password or leave empty to delete username: \U0001f512"
     )
 
     while True:
-        passkey = getpass.getpass("Enter your 4 word key separated with a space: ")
+        passkey = getpass.getpass(
+            "Enter your 4 word key separated with a space: \U0001f512"
+        )
         if len(passkey.strip().split()) != 4:
             print("Passkey must be exactly 4 words separated by spaces.")
             continue
