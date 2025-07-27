@@ -163,9 +163,9 @@ def modify_remove_username():
             print(username)
         user_name = input("Enter a valid username: ")
 
-        new_password = getpass.getpass(
-            "Enter new password or leave empty to delete username: "
-        )
+    new_password = getpass.getpass(
+        "Enter new password or leave empty to delete username: "
+    )
 
     while True:
         passkey = getpass.getpass("Enter your 4 word key separated with a space: ")
@@ -174,18 +174,13 @@ def modify_remove_username():
             continue
         break
 
-    password_to_modify = getpass.getpass("Enter the old password: ")
-    encrypted_old_password = saved_passwords[service][user_name]["password"]
-    password_check = encryption.encrypt(password_to_modify, passkey)
-
-    while password_check != encrypted_old_password:
-        password_to_modify = getpass.getpass("Wrong password. Try again: ")
-        password_check = encryption.encrypt(password_to_modify, passkey)
-
-    if not new_password:
+    if new_password == "":
         del saved_passwords[service][user_name]
         if not saved_passwords[service]:
             del saved_passwords[service]
+        with open(passwords_file, "w") as f:
+            json.dump(saved_passwords, f, indent=4)
+        print("Username/password succesfully modified!")
         return
 
     new_encrypted_password = encryption.encrypt(new_password, passkey)
