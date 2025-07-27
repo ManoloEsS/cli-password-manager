@@ -1,5 +1,5 @@
 import argparse
-import functions
+from cli_password_manager import functions
 
 
 def parser():

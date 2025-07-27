@@ -1,5 +1,5 @@
 import os
-import encryption
+from cli_password_manager import encryption
 import json
 import getpass
 import string
