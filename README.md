@@ -2,7 +2,13 @@
 ![cli-password-manager1](images/2025-07-27-010250_hyprshot.png)
 # 🔐 CLI Password Manager
 
-A simple and secure command-line password manager built with ❤️.
+Cli-password-manager is a utility to encrypt, store and manage passwords from anywhere in your terminal. It allows you to have full control of your
+services' usernames and passwords by storing them locally and encrypted using a passkey of your choice.
+
+## Degooglify your life and take control of your data.
+
+> "The closest thing to burying your passwords in an undisclosed location without having to go outside"  
+> —Some arch user, probably
 
 ---
 
@@ -11,11 +17,27 @@ A simple and secure command-line password manager built with ❤️.
 - Store, retrieve, and manage passwords securely
 - Easy-to-use CLI interface
 - Encryption for stored passwords
+- Generate secure passwords on demand
 - Cross-platform support
 - Open-source and customizable
 
 ---
 
+## 🧑‍💻 How does it work
+
+ ### When you save a password it gets encrypted using the "Cryptography" library
+
+- The four word passkey acts as the encryption and decryption key
+- A secure 32-byte hash is derived from the passkey and used as the salt in the encryption and decryption process
+- Data is stored locally in a .json file
+
+### Why 4 words?
+
+- Inspired by xkcd's take on password strength
+
+![xkcd](images/password_strength.png)
+
+---
 ## 📦 Installation
 
 ### Using `git`
@@ -71,11 +93,6 @@ Add your screenshots here!
 
 ---
 
-## 🤝 Contributing
-
-Contributions are welcome! Please open issues and submit pull requests to help improve this project.
-
----
 
 ## 📄 License
 
@@ -83,7 +100,9 @@ This project is licensed under the MIT License.
 
 ---
 
-## 🙏 Acknowledgements
+## 🙏 Project made for the Boot.dev 2025 Hachathon.
 
-Thanks to all contributors and users!
+Contributors:
+-ManoloEsS
+-Soullessgent
 
