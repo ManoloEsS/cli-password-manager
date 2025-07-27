@@ -1,13 +1,14 @@
 import argparse
 from cli_password_manager import functions
-#from pyfiglet import figlet_format
+from pyfiglet import figlet_format
+import sys
 
 
 def parser():
+    if "-h" in sys.argv or "--help" in sys.argv:
+        (print(figlet_format("CLIPM", font="isometric1")),)
     parser = argparse.ArgumentParser(
-        prog="clipm", 
-        #print(figlet_format("CLIPM", font= "isometric1")), 
-        description="a simple and secure password manager"
+        prog="clipm", description="a simple and secure password manager"
     )
     group = parser.add_mutually_exclusive_group(required=True)
 

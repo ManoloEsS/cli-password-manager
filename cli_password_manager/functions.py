@@ -18,7 +18,7 @@ def add_password():
             continue
         break
     while True:
-        user_name = input("Enter the user_name for the service: ").strip()
+        user_name = input("Enter the username for the service: ").strip()
         if not user_name:
             print("Username cannot be empty.")
             continue
