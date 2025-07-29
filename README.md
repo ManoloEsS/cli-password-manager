@@ -1,3 +1,9 @@
+##  Honorable mention on the [Boot.dev](https://boot.dev/) 2025 Hackathon🔥
+Contributors:
+-ManoloEsS
+-Soullessgent
+
+This project is a prototype/proof of concept for educational purposes. Use at your own risk. Not recommended for use in production.
 
 ![cli-password-manager1](images/2025-07-27-010250_hyprshot.png)
 # 🔐 CLI Password Manager
@@ -168,12 +174,4 @@ clipm --reset
 ## 📄 License
 
 This project is licensed under the MIT License.
-
----
-
-## 🙏 Project made for the [Boot.dev](https://boot.dev/) 2025 Hackathon
-
-Contributors:
--ManoloEsS
--Soullessgent
 
