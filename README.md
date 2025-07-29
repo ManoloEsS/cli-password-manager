@@ -1,7 +1,7 @@
 ##  Honorable mention on the [Boot.dev](https://boot.dev/) 2025 Hackathon🔥
 Contributors:
 -ManoloEsS
--Soullessgent
+-SoullessGent
 
 This project is a prototype/proof of concept for educational purposes. Use at your own risk. Not recommended for use in production.
 
