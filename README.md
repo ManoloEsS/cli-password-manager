@@ -1,4 +1,4 @@
-##  Honorable mention on the [Boot.dev](https://boot.dev/) 2025 Hackathon🔥
+##  Honorable mention on the [Boot.dev 2025 Hackathon](https://blog.boot.dev/news/hackathon-2025/)🔥
 Contributors:
 -ManoloEsS
 -SoullessGent
