@@ -177,11 +177,14 @@ def modify_remove_username():
         saved_passwords = json.load(f)
 
     service = input("Enter name of the service: ")
-    while service not in saved_passwords:
-        service_completions = trie(service[0])
-        print("Service not found. Similar service names: ")
-        for service in service_completions:
-            print(service)
+    while not service or service not in saved_passwords:
+        if not service:
+            print("Service name cannot be empty.")
+        else:
+            service_completions = trie(service[0])
+            print("Service not found. Similar service names: ")
+            for service in service_completions:
+                print(service)
         service = input("Enter the name of the service: ")
 
     user_name = input("Enter a username to modify: ")
